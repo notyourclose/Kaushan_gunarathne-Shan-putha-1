@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kaushan Gunarathne | SHAN PUTHA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Animated Dots Background */
+    .dots-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    nav {
+      background: #000;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      height: 60px;
+      border-bottom: 1px solid #222;
+      z-index: 2;
+      position: relative;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s;
+    }
+    nav ul li a.active, nav ul li a:hover {
+      color: #ffe600;
+      border-bottom: 2px solid #ffe600;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 60px 40px 0 40px;
+      position: relative;
+      z-index: 1;
+      min-height: 80vh;
+    }
+    .left {
+      max-width: 600px;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      flex: 1;
+    }
+    .artist-name {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #fff;
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+    .stage-name {
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: #ffe600;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+    .desc {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 30px;
+      letter-spacing: 0.5px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .btn {
+      background: #ffe600;
+      color: #111;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 8px #0004;
+    }
+    .btn i {
+      margin-right: 8px;
+    }
+    .btn:hover {
+      background: #fff200;
+    }
+    .btn-outline {
+      background: #111;
+      color: #ffe600;
+      border: 2px solid #ffe600;
+    }
+    .btn-outline:hover {
+      background: #ffe600;
+      color: #111;
+    }
+    .socials {
+      margin-top: 10px;
+      display: flex;
+      gap: 18px;
+    }
+    .socials a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.2s;
+    }
+    .socials a:hover {
+      color: #ffe600;
+    }
+    .right {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex: 1;
+      min-width: 300px;
+      z-index: 1;
+      margin-top: 10px;
+      margin-right: 0;
+      margin-left: -60px;
+      position: relative;
+      max-width: 700px;
+      width: 100%;
+    }
+    .image-pro-wrapper {
+      position: relative;
+      display: inline-block;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px 0 rgba(0,0,0,0.45), 0 1.5px 8px 0 rgba(0,0,0,0.18);
+      transition: box-shadow 0.3s, transform 0.3s;
+      background: none;
+      max-width: 450px;
+      width: 450px;
+    }
+    .image-pro-wrapper::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background: linear-gradient(120deg, rgba(20,20,20,0.7) 0%, rgba(40,40,40,0.2) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .image-pro-wrapper:hover {
+      box-shadow: 0 16px 60px 0 rgba(0,0,0,0.65), 0 3px 16px 0 rgba(0,0,0,0.22);
+      transform: scale(1.025);
+    }
+    .right img {
+      max-width: 450px;
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      background: none;
+      box-shadow: none;
+      display: block;
+      position: relative;
+      z-index: 2;
+      transition: filter 0.3s;
+    }
+    .wave {
+      margin: 40px auto 0 auto;
+      width: 220px;
+      height: 48px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 4px;
+      z-index: 2;
+      position: relative;
+    }
+    .bar {
+      width: 10px;
+      background: #ffe600;
+      border-radius: 3px;
+      animation: wave 1.2s infinite;
+    }
+    .bar:nth-child(1) { height: 18px; animation-delay: 0s;}
+    .bar:nth-child(2) { height: 28px; animation-delay: 0.1s;}
+    .bar:nth-child(3) { height: 38px; animation-delay: 0.2s;}
+    .bar:nth-child(4) { height: 28px; animation-delay: 0.3s;}
+    .bar:nth-child(5) { height: 18px; animation-delay: 0.4s;}
+    .bar:nth-child(6) { height: 28px; animation-delay: 0.5s;}
+    .bar:nth-child(7) { height: 38px; animation-delay: 0.6s;}
+    .bar:nth-child(8) { height: 28px; animation-delay: 0.7s;}
+    .bar:nth-child(9) { height: 18px; animation-delay: 0.8s;}
+    @keyframes wave {
+      0%, 100% { transform: scaleY(1);}
+      50% { transform: scaleY(1.8);}
+    }
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .container { flex-direction: column; align-items: flex-start; padding: 40px 20px 0 20px;}
+      .right { margin-top: 30px; justify-content: center; }
+    }
+    @media (max-width: 700px) {
+      nav { padding: 0 10px;}
+      .container { padding: 30px 10px 0 10px; flex-direction: column;}
+      .right img { max-width: 100%; }
+      .image-pro-wrapper { max-width: 100%; }
+      .left { max-width: 100%; }
+    }
+    /* Section styles */
+    section { display: none; padding: 40px 20px;}
+    section.active { display: block;}
+    .section-title {
+      font-size: 2rem;
+      color: #ffe600;
+      margin-bottom: 18px;
+    }
+    .shows-list, .songs-list {
+      list-style: none;
+      padding: 0;
+      color: #fff;
+    }
+    .shows-list li, .songs-list li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+    .shows-list li span, .songs-list li span {
+      color: #ffe600;
+      font-weight: bold;
+    }
+  </style>
+  <!-- Font Awesome for social icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+  <canvas class="dots-bg"></canvas>
+  <nav>
+    <ul>
+      <li><a href="#" class="active" onclick="showSection('home', event)">Home</a></li>
+      <li><a href="#" onclick="showSection('about', event)">About</a></li>
+      <li><a href="#" onclick="showSection('songs', event)">Popular Song</a></li>
+      <li><a href="#" onclick="showSection('shows', event)">Latest Shows</a></li>
+      <li><a href="#" onclick="showSection('contact', event)">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- Home Section -->
+  <div class="container" id="home">
+    <div class="left">
+      <div class="artist-name">Kaushan Gunarathna</div>
+      <div class="stage-name">SHAN PUTHA</div>
+      <div class="desc">Sri Lankan Rap Artist | Musician | Performer</div>
+      <div class="btn-group">
+        <a href="#" class="btn"><i class="fas fa-bolt"></i> Latest Release</a>
+        <a href="#" class="btn btn-outline"><i class="fas fa-music"></i> All Tracks</a>
+      </div>
+      <div class="socials">
+        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+        <a href="#" title="Spotify"><i class="fab fa-spotify"></i></a>
+        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+      </div>
+    </div>
+    <div class="right">
+      <div class="image-pro-wrapper">
+        <img src="490294660_1178455134295474_3787643220464625663_n.jpg" alt="Shan Putha" />
+      </div>
+    </div>
+  </div>
+  <div class="wave">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <!-- About Section -->
+  <section id="about" style="display:none;">
+    <div class="section-title">About</div>
+    <p>
+      Kaushan Gunarathna, known as <b>SHAN PUTHA</b>, is a Sri Lankan rap artist, musician, and performer. 
+      With a unique style and energetic performances, he has captivated audiences across the country. 
+      His music blends traditional Sri Lankan sounds with modern rap, creating a fresh and dynamic experience for fans.
+    </p>
+  </section>
+  <!-- Popular Song Section -->
+  <section id="songs" style="display:none;">
+    <div class="section-title">Popular Songs</div>
+    <ul class="songs-list">
+      <li><span>01.</span> Ape Game (Official Video)</li>
+      <li><span>02.</span> Hitha Hoda Wela</li>
+      <li><span>03.</span> Mage Punchi Kella</li>
+      <li><span>04.</span> Rap Eka</li>
+      <li><span>05.</span> Sihinayak Wage</li>
+    </ul>
+  </section>
+  <!-- Latest Shows Section -->
+  <section id="shows" style="display:none;">
+    <div class="section-title">Latest Shows</div>
+    <ul class="shows-list">
+      <li><span>Colombo</span> - 2024/05/10 - Independence Square</li>
+      <li><span>Kandy</span> - 2024/04/22 - Kandy City Center</li>
+      <li><span>Galle</span> - 2024/03/15 - Galle Fort</li>
+    </ul>
+  </section>
+  <!-- Contact Section -->
+  <section id="contact" style="display:none;">
+    <div class="section-title">Contact</div>
+    <p>
+      For bookings and inquiries, please email:<br>
+      <a href="mailto:shanputha.music@gmail.com" style="color:#ffe600;">shanputha.music@gmail.com</a>
+    </p>
+    <p>Or reach out via social media.</p>
+  </section>
+  <script>
+    // Navigation and section switching
+    function showSection(section, event) {
+      event.preventDefault();
+      document.getElementById('home').style.display = section === 'home' ? 'flex' : 'none';
+      document.querySelector('.wave').style.display = section === 'home' ? 'flex' : 'none';
+      document.querySelectorAll('section').forEach(s => s.style.display = 'none');
+      if(section !== 'home') document.getElementById(section).style.display = 'block';
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    // Default: show home
+    showSection('home', {preventDefault:()=>{}, target:document.querySelector('nav a')});
+
+    // Animated Dots Background
+    const canvas = document.querySelector('.dots-bg');
+    const ctx = canvas.getContext('2d');
+    let w = window.innerWidth, h = window.innerHeight;
+    function resizeCanvas() {
+      w = window.innerWidth; h = window.innerHeight;
+      canvas.width = w; canvas.height = h;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    // Dots grid
+    function makeDots() {
+      dots = [];
+      for(let y=0; y<h+40; y+=40) {
+        for(let x=0; x<w+40; x+=40) {
+          dots.push({x, y, phase: Math.random()*Math.PI*2});
+        }
+      }
+    }
+    let dots = [];
+    makeDots();
+    window.addEventListener('resize', makeDots);
+    function animateDots(ts) {
+      ctx.clearRect(0,0,w,h);
+      for(const dot of dots) {
+        let offset = Math.sin(ts/700 + dot.phase)*2;
+        ctx.beginPath();
+        ctx.arc(dot.x, dot.y+offset, 2.2, 0, Math.PI*2);
+        ctx.fillStyle = '#222';
+        ctx.globalAlpha = 0.7;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+      requestAnimationFrame(animateDots);
+    }
+    animateDots(0);
+  </script>
+</body>
+</html> 

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kaushan Gunarathna | SHAN PUTHA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #000;
+      border-bottom: 1px solid #222;
+      padding: 0 40px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+      border-bottom: 2px solid transparent;
+      transition: border 0.2s, color 0.2s;
+    }
+    nav ul li a.active, nav ul li a:hover {
+      color: #ffe600;
+      border-bottom: 2px solid #ffe600;
+    }
+    section {
+      padding: 80px 0 60px 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      min-height: 60vh;
+    }
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+      justify-content: center;
+    }
+    .hero-img {
+      flex: 1 1 320px;
+      max-width: 400px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-img img {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #000a;
+    }
+    .hero-content {
+      flex: 2 1 400px;
+      max-width: 600px;
+    }
+    .hero-content h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+    }
+    .hero-content h2 {
+      font-size: 2.2rem;
+      color: #ffe600;
+      margin: 0 0 18px 0;
+      font-weight: bold;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #ccc;
+      margin-bottom: 24px;
+    }
+    .stats-row {
+      display: flex;
+      gap: 40px;
+      margin: 28px 0 18px 0;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat .stat-value {
+      font-size: 2.1rem;
+      color: #ffe600;
+      font-weight: bold;
+    }
+    .stat .stat-label {
+      font-size: 1rem;
+      color: #fff;
+      opacity: 0.8;
+    }
+    .section-title {
+      font-size: 2rem;
+      color: #ffe600;
+      margin-bottom: 18px;
+      font-weight: bold;
+    }
+    .media-list, .app-list, .fanart-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 30px 0 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .media-item, .app-item, .fanart-item {
+      background: #181818;
+      border-radius: 14px;
+      box-shadow: 0 2px 12px #0005;
+      padding: 18px;
+      flex: 1 1 220px;
+      min-width: 220px;
+      max-width: 320px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .media-item img, .app-item img, .fanart-item img {
+      width: 100%;
+      max-width: 180px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .media-item h4, .app-item h4, .fanart-item h4 {
+      margin: 10px 0 6px 0;
+      color: #ffe600;
+      font-size: 1.1rem;
+    }
+    .media-item p, .app-item p, .fanart-item p {
+      font-size: 0.98rem;
+      color: #ccc;
+    }
+    .socials {
+      margin-top: 24px;
+      display: flex;
+      gap: 18px;
+    }
+    .socials a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: color 0.2s;
+    }
+    .socials a:hover {
+      color: #ffe600;
+    }
+    @media (max-width: 900px) {
+      section { padding: 60px 0 40px 0; }
+      .hero { flex-direction: column; gap: 24px; }
+      .hero-content { max-width: 100%; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 0 10px; }
+      section { padding: 30px 0 20px 0; }
+      .media-item, .app-item, .fanart-item { min-width: 140px; max-width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#podcast">Podcast</a></li>
+      <li><a href="#fanart">Fan Art</a></li>
+      <li><a href="#apps">Apps</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <section id="home">
+    <div class="hero">
+      <div class="hero-img">
+        <img src="profile.jpg" alt="Shan Putha" />
+      </div>
+      <div class="hero-content">
+        <h1>Kaushan Gunarathna</h1>
+        <h2>SHAN PUTHA</h2>
+        <p>Sri Lankan Rap Artist | Musician | Performer</p>
+        <div class="stats-row">
+          <div class="stat">
+            <div class="stat-value">500K+</div>
+            <div class="stat-label">Monthly Listeners</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">50M+</div>
+            <div class="stat-label">Total Views</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">100+</div>
+            <div class="stat-label">Live Shows</div>
+          </div>
+        </div>
+        <div class="socials">
+          <a href="#"><i class="fab fa-apple"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-spotify"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="about">
+    <div class="section-title">About</div>
+    <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start; justify-content: center; margin-top: 20px;">
+      <div style="flex: 1 1 320px; max-width: 420px; display: flex; justify-content: center;">
+        <img src="about-image.jpg" alt="Shan Putha Live" style="width:100%; max-width:400px; border-radius: 18px; box-shadow: 0 4px 32px #000a;" />
+      </div>
+      <div style="flex: 2 1 400px; max-width: 700px; color: #fff;">
+        <h2 style="font-size:2.2rem; color:#ffe600; margin-bottom: 10px;">About Shan Putha</h2>
+        <p style="font-size:1.1rem; color:#fff; margin-bottom: 18px;">Rising from humble beginnings in the southern region of Sri Lanka, Shan Putha has revolutionized the local rap scene with his unique blend of traditional Sri Lankan elements and modern hip-hop. His authentic storytelling and powerful lyrics resonate with audiences across generations.</p>
+        <div style="display: flex; gap: 40px; margin: 28px 0 18px 0; flex-wrap: wrap;">
+          <div style="text-align:center;">
+            <div style="font-size:2.1rem; color:#ffe600; font-weight:bold;">500K+</div>
+            <div style="font-size:1rem; color:#fff; opacity:0.8;">Monthly Listeners</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:2.1rem; color:#ffe600; font-weight:bold;">50M+</div>
+            <div style="font-size:1rem; color:#fff; opacity:0.8;">Total Views</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-size:2.1rem; color:#ffe600; font-weight:bold;">100+</div>
+            <div style="font-size:1rem; color:#fff; opacity:0.8;">Live Shows</div>
+          </div>
+        </div>
+        <p style="margin-bottom: 14px;">Known for hits like "Mama Enne" and "Hitha Hadaganna", Shan Putha's music addresses social issues while celebrating Sri Lankan culture. His unique style combines hard-hitting beats with melodic elements from traditional Sri Lankan music.</p>
+        <p style="margin-bottom: 0;">Beyond music, he's become a voice for the youth, using his platform to inspire and advocate for positive change in society. His journey from Weeraketiya to national recognition serves as an inspiration for aspiring artists across the country.</p>
+      </div>
+    </div>
+  </section>
+  <section id="achievements">
+    <div class="section-title">Achievements</div>
+    <ul class="media-list">
+      <li class="media-item">
+        <img src="award1.jpg" alt="Award 1" />
+        <h4>Best Rap Artist 2023</h4>
+        <p>Winner of the National Music Awards for Best Rap Artist.</p>
+      </li>
+      <li class="media-item">
+        <img src="award2.jpg" alt="Award 2" />
+        <h4>Top Charting Song</h4>
+        <p>"Mama Enne" reached #1 on Sri Lankan music charts.</p>
+      </li>
+      <li class="media-item">
+        <img src="award3.jpg" alt="Award 3" />
+        <h4>International Collaboration</h4>
+        <p>Collaborated with global artists for a cross-cultural hit.</p>
+      </li>
+    </ul>
+  </section>
+  <section id="media">
+    <div class="section-title">Media</div>
+    <ul class="media-list">
+      <li class="media-item">
+        <img src="media1.jpg" alt="Media 1" />
+        <h4>TV Derana Feature</h4>
+        <p>Featured on TV Derana's music segment.</p>
+      </li>
+      <li class="media-item">
+        <img src="media2.jpg" alt="Media 2" />
+        <h4>Sirasa TV Interview</h4>
+        <p>Exclusive interview about Shan Putha's journey and achievements.</p>
+      </li>
+      <li class="media-item">
+        <img src="media3.jpg" alt="Media 3" />
+        <h4>National Press</h4>
+        <p>Featured in national newspapers for contributions to music and youth.</p>
+      </li>
+    </ul>
+  </section>
+  <section id="podcast">
+    <div class="section-title">Podcast</div>
+    <ul class="media-list">
+      <li class="media-item">
+        <img src="podcast1.jpg" alt="Podcast 1" />
+        <h4>Shan's Thoughts</h4>
+        <p>Podcast episodes on life, music, and inspiration.</p>
+      </li>
+      <li class="media-item">
+        <img src="podcast2.jpg" alt="Podcast 2" />
+        <h4>Special Guests</h4>
+        <p>Conversations with top Sri Lankan and international artists.</p>
+      </li>
+    </ul>
+  </section>
+  <section id="fanart">
+    <div class="section-title">Fan Art</div>
+    <ul class="fanart-list">
+      <li class="fanart-item">
+        <img src="fanart1.jpg" alt="Fan Art 1" />
+        <h4>Fan Art by Dilshan</h4>
+        <p>Creative fan art submitted by the community.</p>
+      </li>
+      <li class="fanart-item">
+        <img src="fanart2.jpg" alt="Fan Art 2" />
+        <h4>Instagram Feature</h4>
+        <p>Featured on Shan Putha's official Instagram.</p>
+      </li>
+    </ul>
+  </section>
+  <section id="apps">
+    <div class="section-title">Apps</div>
+    <ul class="app-list">
+      <li class="app-item">
+        <img src="app1.jpg" alt="App 1" />
+        <h4>Shan Putha Music</h4>
+        <p>Official app for streaming all tracks and exclusive content.</p>
+      </li>
+      <li class="app-item">
+        <img src="app2.jpg" alt="App 2" />
+        <h4>Lyrics & Karaoke</h4>
+        <p>Sing along with lyrics and karaoke features.</p>
+      </li>
+    </ul>
+  </section>
+  <section id="contact">
+    <div class="section-title">Contact</div>
+    <p>For bookings and inquiries, please email:<br>
+      <a href="mailto:shanputha.music@gmail.com" style="color:#ffe600;">shanputha.music@gmail.com</a>
+    </p>
+    <p>Or reach out via social media.</p>
+  </section>
+</body>
+</html> 
